@@ -1,0 +1,78 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+  line-height: 1.5;
+  color: #2a2a2a;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  margin-bottom: 24px;
+}
+.input {
+  width: 400px;
+}
+.btn {
+  width: 200px;
+  height: 40px;
+  background-color: lightpink;
+}
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button.is-hidden {
+  display: none;
+}
+
+.button > .spinner.is-hidden {
+  display: none;
+}
+
+.gallery {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-left: -20px;
+  margin-bottom: -20px + 40px;
+}
+.gallery__item {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border: 1px solid gray;
+  flex-basis: calc((100% / 6) - 20px);
+}
+.stats {
+  display: flex;
+  justify-content: center;
+  margin-right: -30px;
+}
+.stats-item {
+  margin-right: 30px;
+}
+.img {
+  width: 100%;
+  height: 320px;
+  border: 1px solid lightgoldenrodyellow;
+}
+.container {
+  padding: 30px;
+}
