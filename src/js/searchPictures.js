@@ -1,4 +1,4 @@
-import PictureApiService from './apiService';
+import PictureApiService from './asyncApiService';
 import pictureListTmpl from '../templates/picture-card';
 import LoadMoreBtn from './loadMoreBtn';
 const refs = {
@@ -25,27 +25,41 @@ function onSearch(e) {
 function loadMoreBtnHandler() {
   fetchPictures();
 }
-function fetchPictures() {
+async function fetchPictures() {
   loadMoreBtn.disable();
-  pictureApi
-    .fetchPictures()
-    .then(pictures => {
-      insertGalleryItems(pictures);
-      loadMoreBtn.enable();
-      refs.pictureContainer.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-      });
-    })
-    .catch(error => {
-      console.warn(error);
+  try {
+    const pictures = await pictureApi.fetchPictures();
+    insertGalleryItems(pictures);
+    loadMoreBtn.enable();
+    refs.pictureContainer.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
     });
+  } catch (error) {
+    alert(error);
+  }
 }
+// function fetchPictures() {
+//   loadMoreBtn.disable();
+//   pictureApi
+//     .fetchPictures()
+//     .then(pictures => {
+//       insertGalleryItems(pictures);
+//       loadMoreBtn.enable();
+//       refs.pictureContainer.scrollIntoView({
+//         behavior: 'smooth',
+//         block: 'end',
+//       });
+//     })
+//     .catch(error => {
+//       console.warn(error);
+//     });
+// }
 function clearGallery() {
   refs.pictureContainer.innerHTML = '';
 }
 function insertGalleryItems(items) {
-  console.log(items);
+  // console.log(items);
   const markup = pictureListTmpl(items);
   refs.pictureContainer.insertAdjacentHTML('beforeend', markup);
 }
